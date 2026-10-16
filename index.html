@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="mk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5efe4">
+  <meta name="description" content="Косел Винарија — вино, локална гастрономија и посебни моменти во близина на Охрид.">
+  <title>Косел Винарија — Вино кое ги поврзува луѓето</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- PRELOADER: LOGO + WINE GLASS -->
+  <div class="site-preloader" id="sitePreloader" role="status" aria-label="Loading Kosel Winery">
+    <div class="preloader-content">
+      <a class="preloader-brand" href="index.html">
+        <span>KOSEL</span>
+        <small>WINERY</small>
+      </a>
+
+      <div class="preloader-glass" aria-hidden="true">
+        <svg viewBox="0 0 120 170" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="wineGlassClip">
+              <path d="M29 20 C32 57 40 78 54 92 Q60 98 66 92 C80 78 88 57 91 20 Z"/>
+            </clipPath>
+          </defs>
+
+          <g clip-path="url(#wineGlassClip)">
+            <rect class="wine-liquid" x="18" y="18" width="84" height="85"/>
+            <circle class="wine-bubble bubble-one" cx="47" cy="80" r="2"/>
+            <circle class="wine-bubble bubble-two" cx="69" cy="70" r="1.6"/>
+            <circle class="wine-bubble bubble-three" cx="57" cy="58" r="1.8"/>
+          </g>
+
+          <path class="glass-outline" d="M29 20 C32 57 40 78 54 92 Q60 98 66 92 C80 78 88 57 91 20"/>
+          <path class="glass-rim" d="M29 20 Q60 25 91 20"/>
+          <path class="glass-outline" d="M60 97 L60 139 M43 147 Q60 153 77 147"/>
+          <path class="glass-highlight" d="M38 31 Q41 58 49 72"/>
+        </svg>
+      </div>
+
+      <p class="preloader-caption">WINE · NATURE · MOMENTS</p>
+      <div class="preloader-track"><span></span></div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Kosel Winery home">
+      <span>KOSEL</span>
+      <small>WINERY</small>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Главна навигација">
+      <a href="#wines" data-i18n="nav.wines">Наши вина</a>
+      <a href="#story" data-i18n="nav.story">Нашата приказна</a>
+      <a href="menu.html" data-i18n="nav.menu">Мени</a>
+      <a href="#gallery" data-i18n="nav.gallery">Галерија</a>
+      <a href="#events" data-i18n="nav.events">Настани</a>
+      <a href="#contact" data-i18n="nav.contact">Контакт</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="language-switch" role="group" aria-label="Choose language">
+        <button type="button" data-set-lang="mk" class="is-active">MK</button>
+        <span>/</span>
+        <button type="button" data-set-lang="en">EN</button>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Отвори мени" aria-expanded="false" aria-controls="mainNav">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-image"></div>
+      <div class="hero-shade"></div>
+
+      <div class="hero-copy reveal">
+        <p class="eyebrow light" data-i18n="hero.eyebrow">КОСЕЛ · ОХРИДСКИ РЕГИОН</p>
+
+        <h1 data-i18n="hero.title">Вино кое<br>ги поврзува луѓето</h1>
+
+        <p data-i18n="hero.copy">
+          Традиција, природа и автентично доживување во срцето на охридскиот регион.
+        </p>
+
+        <a class="button button-outline" href="#story">
+          <span data-i18n="hero.cta">ЗАПОЗНАЈТЕ ЈА ПРИКАЗНАТА</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- OUR WINES -->
+    <section class="wine-section section-frame" id="wines">
+      <div class="section-intro reveal">
+        <p class="eyebrow" data-i18n="wines.eyebrow">ИЗБРАНО ОД ВИНАРИЈАТА</p>
+        <h2 data-i18n="wines.title">Наши вина</h2>
+
+        <p data-i18n="wines.copy">
+          Вина за долги разговори, добра храна и моменти што вреди да се запаметат.
+        </p>
+
+        <a class="text-link" href="menu.html#wine-list">
+          <span data-i18n="wines.cta">ИСТРАЖИ ГО ВИНСКОТО МЕНИ</span>
+        </a>
+      </div>
+
+      <div class="wine-rail" id="wineRail" aria-label="Колекција вина">
+        <article class="wine-card">
+          <div class="bottle-photo">
+            <img src="/img/Premium Kosel Vranec Wine Bottle.png" alt="Red wine bottle">
+          </div>
+          <h3 data-i18n="wine.vranec">Вранец</h3>
+          <p data-i18n="wine.vranecDesc">Црвено суво вино</p>
+          <small>750 ml</small>
+        </article>
+
+        <article class="wine-card">
+          <div class="bottle-photo">
+            <img src="/img/Kosel Temjanika Under Sunlit Shadows.png" alt="Merlot wine">
+          </div>
+          <h3 data-i18n="wine.merlot">Мерло</h3>
+          <p data-i18n="wine.red">Црвено суво вино</p>
+          <small>750 ml</small>
+        </article>
+
+        <article class="wine-card">
+          <div class="bottle-photo">
+            <img src="/img/Luxurious Kosel Cabernet Sauvignon Bottle.png" alt="White wine">
+          </div>
+          <h3 data-i18n="wine.chardonnay">Кабарнет</h3>
+          <p data-i18n="wine.white">Бело суво вино</p>
+          <small>750 ml</small>
+        </article>
+
+        <article class="wine-card">
+          <div class="bottle-photo">
+            <img src="/img/Kosel Rosé in Sunlit Stone.png" alt="Rosé wine">
+          </div>
+          <h3 data-i18n="wine.rose">Розе</h3>
+          <p data-i18n="wine.roseDesc">Розе суво вино</p>
+          <small>750 ml</small>
+        </article>
+
+        <article class="wine-card">
+          <div class="bottle-photo">
+            <img src="/img/Kosel Merlot on Stone Plinth.png" alt="Reserve wine">
+          </div>
+          <h3 data-i18n="wine.reserve">Мерлот</h3>
+          <p data-i18n="wine.reserveDesc">Одбрана винска линија</p>
+          <small>750 ml</small>
+        </article>
+      </div>
+
+      <div class="wine-progress" aria-hidden="true">
+        <span></span>
+      </div>
+    </section>
+
+    <!-- WINE QUOTE -->
+    <section class="bottle-banner" id="gallery">
+      <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=2000&q=90" alt="Вино на топла, атмосферична трпеза">
+
+      <div class="bottle-banner-shade"></div>
+      <div class="banner-word" aria-hidden="true">KOSEL</div>
+
+      <div class="banner-copy reveal">
+        <p class="eyebrow light" data-i18n="quote.eyebrow">ЕДНА ЧАША. МНОГУ ПРИКАЗНИ.</p>
+
+        <h2 data-i18n="quote.title">
+          „Доброто вино не го мери времето. Го прави незаборавно.“
+        </h2>
+
+        <p data-i18n="quote.copy">
+          За разговорите што траат подолго, тишината што ни годи и луѓето со кои вреди да се наздрави.
+        </p>
+      </div>
+    </section>
+
+    <!-- OUR STORY -->
+    <section class="story-section section-frame" id="story">
+      <div class="story-copy reveal">
+        <p class="eyebrow" data-i18n="story.eyebrow">КОРЕНИ ВО ПРИРОДАТА</p>
+        <h2 data-i18n="story.title">Нашата приказна</h2>
+
+        <p data-i18n="story.copy">
+          Косел ја замислуваме како место каде што виното започнува со земјата, а продолжува околу трпезата. Инспирирани од охридскиот крај, ги спојуваме мирот на природата, локалните вкусови и гостопримството што прави секој гостин да се чувствува како дома.
+        </p>
+
+        <a class="button button-dark" href="story.html">
+          <span data-i18n="story.cta">ПРОЧИТАЈТЕ ЈА ПРИКАЗНАТА</span>
+        </a>
+      </div>
+
+      <div class="story-photo reveal">
+        <img src="/img/Kosel Vinarija Wine Cellar Display.png" alt="Дрвени буриња во вински подрум">
+      </div>
+    </section>
+
+    <!-- RESTAURANT MENU -->
+    <section class="menu-feature section-frame" id="menu-feature">
+      <div class="feature-photo food-photo reveal">
+        <img src="/img/Golden Hour Vineyard Feast.png" alt="Рустична трпеза со внимателно подготвена храна">
+      </div>
+
+      <div class="feature-copy reveal">
+        <p class="eyebrow" data-i18n="restaurant.eyebrow">ОД НАШАТА КУЈНА</p>
+        <h2 data-i18n="restaurant.title">Ресторанско<br>мени</h2>
+
+        <p data-i18n="restaurant.copy">
+          Локални состојки, рецепти за споделување и вкусови што природно се надополнуваат со чаша добро вино.
+        </p>
+
+        <a class="button button-dark" href="menu.html">
+          <span data-i18n="restaurant.cta">ИСТРАЖИ ГО МЕНИТО</span>
+        </a>
+
+        <div class="sketch sketch-plate" aria-hidden="true">❧</div>
+      </div>
+    </section>
+
+    <!-- EVENTS: TEXT LEFT, PHOTO RIGHT ON DESKTOP -->
+    <section class="events-section section-frame" id="events">
+      <div class="events-photo reveal">
+        <img src="/img/Golden Hour Stone Villa Retreat.png" alt="Свечена трпеза на отворено за посебен настан">
+      </div>
+
+      <div class="events-copy reveal">
+        <p class="eyebrow" data-i18n="events.eyebrow">НАСТАНИ ВО КОСЕЛ</p>
+        <h2 data-i18n="events.title">Настани што ги организираме</h2>
+
+        <p data-i18n="events.copy">
+          Од интимни прослави до големи собири — создадовме место каде што добрата атмосфера, храната и виното стануваат дел од вашата приказна.
+        </p>
+
+        <div class="event-list" aria-label="Видови настани">
+          <span data-i18n="events.weddings">Свадби</span>
+          <span data-i18n="events.proms">Матури</span>
+          <span data-i18n="events.baptisms">Крштевки</span>
+          <span data-i18n="events.birthdays">Родендени</span>
+          <span data-i18n="events.team">Тим билдинг</span>
+          <span data-i18n="events.private">Приватни настани</span>
+        </div>
+
+        <a class="button button-dark" href="#reservation">
+          <span data-i18n="events.cta">ПЛАНИРАЈ НАСТАН</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="testimonials section-frame">
+      <div class="testimonials-heading reveal">
+        <p class="eyebrow" data-i18n="reviews.eyebrow">УБАВИ ЗБОРОВИ ОД ГОСТИТЕ</p>
+        <h2 data-i18n="reviews.title">Спомени што остануваат</h2>
+        <p data-i18n="reviews.copy">Најубавото признание е кога гостите повторно ни се враќаат.</p>
+      </div>
+
+      <div class="review-grid">
+        <article class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p data-i18n="reviews.one">„Прекрасна атмосфера, одлично вино и топло гостопримство. Место на кое со задоволство се враќаме.“</p>
+          <b data-i18n="reviews.guest1">Гостин на винаријата</b>
+        </article>
+
+        <article class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p data-i18n="reviews.two">„Локални вкусови, мир и прекрасна природа. Секој детаљ придонесува за вистинско уживање.“</p>
+          <b data-i18n="reviews.guest2">Посетител од Охрид</b>
+        </article>
+
+        <article class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p data-i18n="reviews.three">„Совршено место за посебен повод. Прекрасната атмосфера го прави денот уште поубав.“</p>
+          <b data-i18n="reviews.guest3">Гостин на настан</b>
+        </article>
+      </div>
+    </section>
+
+    <!-- RESERVATION -->
+    <section class="reservation-band" id="reservation">
+      <div class="reservation-bg"></div>
+
+      <div class="reservation-copy reveal">
+        <p class="eyebrow" data-i18n="reservation.eyebrow">ВАШЕТО МЕСТО ВЕ ЧЕКА</p>
+        <h2 data-i18n="reservation.title">Резервирајте ја<br>вашата посета</h2>
+
+        <p data-i18n="reservation.copy">
+          Уживајте во вината на Косел, вкусната храна и атмосферата на нашето мало винско прибежиште.
+        </p>
+
+        <a class="button button-outline" href="#contact">
+          <span data-i18n="reservation.cta">КОНТАКТИРАЈТЕ НÈ</span>
+        </a>
+      </div>
+
+      <div class="reservation-details">
+        <p><span>☎</span> +389 78 232 168</p>
+        <p><span>✉</span> koselwinery@gmail.com</p>
+        <p><span>⌖</span> <span data-i18n="contact.address">Косел, Охрид, Македонија</span></p>
+
+        <div class="reservation-socials" aria-label="Social media">
+          <a href="https://instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle class="social-dot" cx="18" cy="6" r="1"/>
+            </svg>
+          </a>
+
+          <a href="https://facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path class="facebook-mark" d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5H17V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.5v3h2.8v8h3.2Z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer section-frame" id="contact">
+    <div class="footer-brand">
+      <a class="brand brand-light" href="index.html">
+        <span>KOSEL</span>
+        <small>WINERY</small>
+      </a>
+
+      <p data-i18n="footer.copy">
+        Вино, природа и автентични вкусови во срцето на охридскиот регион.
+      </p>
+
+      <div class="social-links">
+        <a href="https://instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">ig</a>
+        <a href="https://facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook">f</a>
+      </div>
+    </div>
+
+    <div class="footer-column">
+      <h3 data-i18n="footer.links">Брзи линкови</h3>
+      <a href="#wines" data-i18n="nav.wines">Наши вина</a>
+      <a href="story.html" data-i18n="nav.story">Нашата приказна</a>
+      <a href="menu.html" data-i18n="nav.menu">Мени</a>
+      <a href="#gallery" data-i18n="nav.gallery">Галерија</a>
+      <a href="#events" data-i18n="nav.events">Настани</a>
+    </div>
+
+    <div class="footer-column">
+      <h3 data-i18n="footer.contact">Контакт</h3>
+      <p data-i18n="contact.address">Косел, Охрид, Македонија</p>
+      <a href="tel:+38978232168">+389 78 232 168</a>
+      <a href="mailto:koselwinery@gmail.com">koselwinery@gmail.com</a>
+
+      <h3 class="hours-title" data-i18n="footer.hours">Работно време</h3>
+      <p data-i18n="footer.opening">Понеделник – Недела<br>11:00 – 21:00</p>
+    </div>
+
+    <div class="footer-map">
+      <h3 data-i18n="footer.visit">Посетете нè</h3>
+
+      <a class="map-placeholder" href="https://www.google.com/maps/search/?api=1&query=Kosel+Winery+Ohrid" target="_blank" rel="noreferrer">
+        <span>⌖</span>
+        <b data-i18n="contact.map">КОСЕЛ · ОХРИД</b>
+      </a>
+
+      <a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Kosel+Winery+Ohrid" target="_blank" rel="noreferrer">
+        <span data-i18n="footer.maps">ОТВОРИ ВО GOOGLE MAPS</span>
+        <span>⟶</span>
+      </a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Kosel Winery. <span data-i18n="footer.rights">Сите права се задржани.</span></span>
+      <span data-i18n="footer.made">Создадено со љубов кон виното.</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

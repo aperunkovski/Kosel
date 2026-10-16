@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5efe4">
+  <meta name="description" content="Мени на Косел Винарија — локални специјалитети, мезе и вина.">
+
+  <title>Мени — Косел Винарија</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* =========================================
+       MENU PAGE
+    ========================================= */
+
+    .menu-page .menu-main {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .menu-page .menu-heading {
+      padding: clamp(38px, 5vw, 64px) clamp(24px, 7vw, 105px) 35px;
+      text-align: center;
+      background:
+        radial-gradient(
+          ellipse at 50% 0%,
+          rgba(154, 104, 79, 0.10),
+          transparent 65%
+        ),
+        var(--paper);
+      border-bottom: 0;
+    }
+
+    .menu-page .menu-heading-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      color: #98745f;
+      font-size: 9px;
+      letter-spacing: 0.16em;
+    }
+
+    .menu-page .menu-heading-rule span:first-child {
+      color: var(--wine);
+      font-family: var(--serif);
+      font-size: 13px;
+      letter-spacing: 0.14em;
+    }
+
+    .menu-page .menu-heading-rule i {
+      width: 34px;
+      height: 1px;
+      background: rgba(90, 32, 27, 0.38);
+    }
+
+    .menu-page .menu-heading h1 {
+      margin: 17px auto 0;
+      color: var(--wine);
+      font: 400 clamp(2.8rem, 5.4vw, 5rem)/1.08 var(--serif);
+      letter-spacing: -0.045em;
+    }
+
+    /* Categories */
+
+    .menu-page .menu-content {
+      padding: 0 clamp(24px, 7vw, 105px) clamp(58px, 7vw, 88px);
+      border-top: 0;
+    }
+
+    .menu-page .menu-toolbar {
+      display: block;
+      padding: 22px 0 26px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .menu-page .menu-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .menu-page .menu-tab {
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--wine);
+      font-family: "DM Sans", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .menu-page .menu-tab:hover,
+    .menu-page .menu-tab.active {
+      border-color: var(--wine);
+      background: var(--wine);
+      color: #fff8ef;
+    }
+
+    /* Menu grid */
+
+    .menu-page .menu-lists {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(30px, 4vw, 54px) clamp(28px, 5vw, 72px);
+      padding-top: 36px;
+    }
+
+    .menu-page .menu-group {
+      min-width: 0;
+    }
+
+    .menu-page .menu-group[hidden] {
+      display: none !important;
+    }
+
+    .menu-page .menu-group-head {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 5px;
+      padding-bottom: 13px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .menu-page .menu-group-head > span {
+      color: #ad866b;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+    }
+
+    .menu-page .menu-group-head h2 {
+      margin: 0;
+      color: var(--wine);
+      font: 400 clamp(1.55rem, 2.3vw, 2rem)/1.2 var(--serif);
+      letter-spacing: -0.02em;
+    }
+
+    .menu-page .menu-rows {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-page .menu-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 17px 0 16px;
+      border-bottom: 1px solid rgba(80, 42, 31, 0.13);
+    }
+
+    .menu-page .menu-row > div {
+      min-width: 0;
+    }
+
+    .menu-page .menu-row h3 {
+      margin: 0 0 5px;
+      color: #43201a;
+      font: 500 clamp(1rem, 1.4vw, 1.2rem)/1.3 var(--serif);
+    }
+
+    .menu-page .menu-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .menu-page .menu-row .menu-price {
+      flex-shrink: 0;
+      padding-top: 2px;
+      color: var(--wine);
+      font: 500 14px/1.4 var(--serif);
+      white-space: nowrap;
+    }
+
+    /* Call to action */
+
+    .menu-page .menu-cta {
+      margin-top: 0;
+    }
+
+    .menu-page .menu-cta h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 760px) {
+      .menu-page .menu-heading {
+        padding: 38px 20px 30px;
+      }
+
+      .menu-page .menu-heading-rule {
+        gap: 9px;
+        font-size: 8px;
+        letter-spacing: 0.1em;
+      }
+
+      .menu-page .menu-heading-rule i {
+        width: 20px;
+      }
+
+      .menu-page .menu-heading h1 {
+        font-size: clamp(2.6rem, 10vw, 3.8rem);
+      }
+
+      .menu-page .menu-content {
+        padding: 0 20px 55px;
+      }
+
+      .menu-page .menu-toolbar {
+        padding: 18px 0 20px;
+      }
+
+      .menu-page .menu-tabs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 7px;
+      }
+
+      .menu-page .menu-tab {
+        padding: 11px 5px;
+        font-size: 10px;
+      }
+
+      .menu-page .menu-lists {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-top: 28px;
+      }
+
+      .menu-page .menu-row {
+        gap: 12px;
+        padding: 15px 0;
+      }
+
+      .menu-page .menu-row h3 {
+        font-size: 17px;
+      }
+
+      .menu-page .menu-row p {
+        font-size: 11px;
+      }
+
+      .menu-page .menu-row .menu-price {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .menu-page .menu-tabs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .menu-page .menu-heading-rule span:last-child {
+        max-width: 190px;
+      }
+    }
+  </style>
+</head>
+
+<body class="menu-page">
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+
+    <a class="brand" href="index.html" aria-label="Kosel Winery home">
+      <span>KOSEL</span>
+      <small>WINERY</small>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <a href="index.html#wines" data-i18n="nav.wines">Наши вина</a>
+      <a href="index.html#story" data-i18n="nav.story">Нашата приказна</a>
+      <a class="active" href="menu.html" data-i18n="nav.menu">Мени</a>
+      <a href="index.html#gallery" data-i18n="nav.gallery">Галерија</a>
+      <a href="index.html#events" data-i18n="nav.events">Настани</a>
+      <a href="index.html#contact" data-i18n="nav.contact">Контакт</a>
+    </nav>
+
+    <div class="header-actions">
+
+      <div class="language-switch" role="group" aria-label="Choose language">
+        <button type="button" data-set-lang="mk" class="is-active">MK</button>
+        <span>/</span>
+        <button type="button" data-set-lang="en">EN</button>
+      </div>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Отвори мени"
+        aria-expanded="false"
+        aria-controls="mainNav"
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+
+  <!-- MENU -->
+  <main class="menu-main">
+
+    <!-- TITLE ONLY -->
+    <section class="menu-heading section-frame">
+
+      <div class="menu-heading-rule">
+        <span>KOSEL</span>
+        <i></i>
+        <span data-i18n="menu.headingLine">ВКУСОТ НА НАШИОТ КРАЈ</span>
+      </div>
+
+      <h1 data-i18n="menu.title">Менито на Косел</h1>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section class="menu-content section-frame" id="menu-list">
+
+      <div class="menu-toolbar">
+
+        <div class="menu-tabs" role="group" aria-label="Категории на менито">
+
+          <button type="button" class="menu-tab active" data-category="all" data-i18n="menu.all">
+            Сè
+          </button>
+
+          <button type="button" class="menu-tab" data-category="drinks" data-i18n="menu.drinks">
+            Пијалаци
+          </button>
+
+          <button type="button" class="menu-tab" data-category="salads" data-i18n="menu.salads">
+            Салати
+          </button>
+
+          <button type="button" class="menu-tab" data-category="mezze" data-i18n="menu.mezze">
+            Мезе
+          </button>
+
+          <button type="button" class="menu-tab" data-category="mains" data-i18n="menu.mains">
+            Главни јадења
+          </button>
+
+          <button type="button" class="menu-tab" data-category="desserts" data-i18n="menu.desserts">
+            Десерти
+          </button>
+
+          <button type="button" class="menu-tab" data-category="wines" data-i18n="menu.wines">
+            Вина
+          </button>
+
+        </div>
+      </div>
+
+
+      <!-- MENU ITEMS -->
+      <div class="menu-lists" id="dishGrid">
+
+        <!-- DRINKS -->
+        <section class="menu-group" data-group="drinks">
+
+          <div class="menu-group-head">
+            <span>01</span>
+            <h2 data-i18n="menu.drinks">Пијалаци</h2>
+          </div>
+
+          <div class="menu-rows">
+
+            <article class="menu-row" data-category="drinks">
+              <div>
+                <h3 data-i18n="item.water">Минерална и негазирана вода</h3>
+                <p data-i18n="item.waterDesc">Разладена, за секоја трпеза.</p>
+              </div>
+              <strong class="menu-price">80 ден.</strong>
+            </article>
+
+            <article class="menu-row" data-category="drinks">
+              <div>
+                <h3 data-i18n="item.coffee">Кафе</h3>
+                <p data-i18n="item.coffeeDesc">Еспресо и топли напитоци.</p>
+              </div>
+              <strong class="menu-price">100 ден.</strong>
+            </article>
+
+            <article class="menu-row" data-category="drinks">
+              <div>
+                <h3 data-i18n="item.soft">Безалкохолни пијалаци</h3>
+                <p data-i18n="item.softDesc">Избор на освежителни пијалаци.</p>
+              </div>
+              <strong class="menu-price">130 ден.</strong>
+            </article>
+
+          </div>
+        </section>
+
+
+        <!-- SALADS -->
+        <section class="menu-group" data-group="salads">
+
+          <div class="menu-group-head">
+            <span>02</span>
+            <h2 data-i18n="menu.salads">Салати</h2>
+          </div>
+
+          <div class="menu-rows">
+
+            <article class="menu-row" data-category="salads">
+              <div>
+                <h3 data-i18n="item.shopska">Шопска салата</h3>
+                <p data-i18n="item.shopskaDesc">Домат, краставица, пиперка и сирење.</p>
+              </div>
+              <strong class="menu-price">250 ден.</strong>
+            </article>
+
+            <article class="menu-row" data-category="salads">
+              <div>
+                <h3 data-i18n="item.season">Сезонска салата</h3>
+                <p data-i18n="item.seasonDesc">Свеж зеленчук и домашен прелив.</p>
+              </div>
+              <strong class="menu-price">220 ден.</strong>
+            </article>
+
+            <article class="menu-row" data-category="salads">
+              <div>
+                <h3 data-i18n="item.village">Селска салата</h3>
+                <p data-i18n="item.villageDesc">Состојки инспирирани од локалната кујна.</p>
+              </div>
+              <strong class="menu-price">280 ден.</strong>
+            </article>
+
+          </div>
+        </section>
+
+
+        <!-- MEZZE -->
+        <section class="menu-group" data-group="mezze">
+
+          <div class="menu-group-head">
+            <span>03</span>
+            <h2 data-i18n="menu.mezze">Мезе</h2>
+          </div>
+
+          <div class="menu-rows">
+
+            <article class="menu-row" data-category="mezze">
+              <div>
+                <h3 data-i18n="item.cheese">Плато со локални сирења</h3>
+                <p data-i18n="item.cheeseDesc">Избор на сирења за споделување.</p>
+              </div>
+              <strong class="menu-price">480 ден.</strong>
+            </article>
+
+            <article class="menu-row" data-category="mezze">
+              <div>
+                <h3 data-i18n="item.cold">Домашно ладно мезе</h3>
+                <p data-i18n="item.coldDesc">Мали залчиња, маслинки и сезонски прилози.</p>
+              </div>
+              <strong class="menu-price">390 ден.</strong>
+            </article>
+
+            <article class="menu-row" data-category="mezze">
+              <div>
+                <h3 data-i18n="item.bruschetta">Брускети од куќата</h3>
+                <p data-i18n="item.bruschettaDesc">Печен леб, домати, маслиново масло и билки.</p>
+              </div>
+              <strong class="menu-price">270 ден.</strong>
+            </article>
+
+          </div>
+        </section>
+
+
+        <!-- MAIN COURSES -->
+        <section class="menu-group" data-group="mains">
+
+          <div class="menu-group-head">
+            <span>04</span>
+            <h2 data-i18n="menu.mains">Главни јадења</h2>
+          </div>
+
+          <div class="menu-rows">
+
+            <article class="menu-row" data-category="mains">
+              <div>
+                <h3 data-i18n="item.grill">Избор од скара</h3>
+                <p data-i18n="item.grillDesc">Свежо подготвено, со сезонски прилог.</p>
+              </div>
+              <strong class="menu-price">750 ден.</strong>
+            </article>
+
+            <article class="menu-row" data-category="mains">
+              <div>
+                <h3 data-i18n="item.house">Домашен специјалитет</h3>
+                <p data-i18n="item.houseDesc">Рецепт инспириран од локалните вкусови.</p>
+              </div>
+              <strong class="menu-price">690 ден.</strong>
+            </article>
+
+            <article class="menu-row" data-category="mains">
+              <div>
+                <h3 data-i18n="item.veg">Вегетаријанска чинија</h3>
+                <p data-i18n="item.vegDesc">Зеленчук од сезоната, житарици и билки.</p>
+              </div>
+              <strong class="menu-price">420 ден.</strong>
+            </article>
+
+          </div>
+        </section>
+
+
+        <!-- DESSERTS -->
+        <section class="menu-group" data-group="desserts">
+
+          <div class="menu-group-head">
+            <span>05</span>
+            <h2 data-i18n="menu.desserts">Десерти</h2>
+          </div>
+
+          <div class="menu-rows">
+
+            <article class="menu-row" data-category="desserts">
+              <div>
+                <h3 data-i18n="item.dessert">Десерт на денот</h3>
+                <p data-i18n="item.dessertDesc">Домашно слатко изненадување.</p>
+              </div>
+              <strong class="menu-price">220 ден.</strong>
+            </article>
+
+            <article class="menu-row" data-category="desserts">
+              <div>
+                <h3 data-i18n="item.fruit">Свежо овошје</h3>
+                <p data-i18n="item.fruitDesc">Сезонски избор, според достапноста.</p>
+              </div>
+              <strong class="menu-price">180 ден.</strong>
+            </article>
+
+          </div>
+        </section>
+
+
+        <!-- WINES -->
+        <section class="menu-group" data-group="wines" id="wine-list">
+
+          <div class="menu-group-head">
+            <span>06</span>
+            <h2 data-i18n="menu.wines">Вина</h2>
+          </div>
+
+          <div class="menu-rows">
+
+            <article class="menu-row" data-category="wines">
+              <div>
+                <h3 data-i18n="wine.vranec">Вранец</h3>
+                <p data-i18n="wine.vranecDesc">Црвено суво вино · 750 ml</p>
+              </div>
+              <strong class="menu-price">950 ден.</strong>
+            </article>
+
+            <article class="menu-row" data-category="wines">
+              <div>
+                <h3 data-i18n="wine.merlot">Мерло</h3>
+                <p data-i18n="wine.red">Црвено суво вино · 750 ml</p>
+              </div>
+              <strong class="menu-price">1.100 ден.</strong>
+            </article>
+
+            <article class="menu-row" data-category="wines">
+              <div>
+                <h3 data-i18n="wine.chardonnay">Шардоне</h3>
+                <p data-i18n="wine.white">Бело суво вино · 750 ml</p>
+              </div>
+              <strong class="menu-price">1.000 ден.</strong>
+            </article>
+
+            <article class="menu-row" data-category="wines">
+              <div>
+                <h3 data-i18n="wine.rose">Розе</h3>
+                <p data-i18n="wine.roseDesc">Розе суво вино · 750 ml</p>
+              </div>
+              <strong class="menu-price">900 ден.</strong>
+            </article>
+
+            <article class="menu-row" data-category="wines">
+              <div>
+                <h3 data-i18n="wine.reserve">Резерва</h3>
+                <p data-i18n="wine.reserveDesc">Одбрана винска линија · 750 ml</p>
+              </div>
+              <strong class="menu-price">1.500 ден.</strong>
+            </article>
+
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+
+    <!-- CALL TO ACTION -->
+    <section class="menu-cta">
+
+      <div>
+        <p class="eyebrow light" data-i18n="menu.ctaEyebrow">
+          СЕ ГЛЕДАМЕ ОКОЛУ ТРПЕЗАТА
+        </p>
+
+        <h2 data-i18n="menu.ctaTitle">
+          Одберете вкус.<br>
+          Отворете добро вино.
+        </h2>
+
+        <p data-i18n="menu.ctaCopy">
+          Контактирајте нè за резервација или организирање настан.
+        </p>
+      </div>
+
+      <a class="button button-outline" href="index.html#contact">
+        <span data-i18n="nav.contact">КОНТАКТ</span>
+        <b>⟶</b>
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer section-frame" id="contact">
+
+    <div class="footer-brand">
+      <a class="brand brand-light" href="index.html">
+        <span>KOSEL</span>
+        <small>WINERY</small>
+      </a>
+
+      <p data-i18n="footer.copy">
+        Вино, природа и автентични вкусови во срцето на охридскиот регион.
+      </p>
+    </div>
+
+    <div class="footer-column">
+      <h3 data-i18n="footer.links">Брзи линкови</h3>
+      <a href="index.html#wines" data-i18n="nav.wines">Наши вина</a>
+      <a href="story.html" data-i18n="nav.story">Нашата приказна</a>
+      <a href="menu.html" data-i18n="nav.menu">Мени</a>
+      <a href="index.html#events" data-i18n="nav.events">Настани</a>
+    </div>
+
+    <div class="footer-column">
+      <h3 data-i18n="footer.contact">Контакт</h3>
+      <a href="tel:+38978232168">+389 78 232 168</a>
+      <a href="mailto:koselwinery@gmail.com">koselwinery@gmail.com</a>
+
+      <p data-i18n="footer.opening">
+        Понеделник – Недела<br>
+        11:00 – 21:00
+      </p>
+    </div>
+
+    <div class="footer-bottom">
+      <span>
+        © 2026 Kosel Winery.
+        <span data-i18n="footer.rights">Сите права се задржани.</span>
+      </span>
+
+      <a href="index.html" data-i18n="story.home">← Назад на почетна</a>
+    </div>
+
+  </footer>
+
+
+  <!-- EXISTING SITE JAVASCRIPT -->
+  <script src="js/main.js"></script>
+
+  <!-- FUNCTIONAL CATEGORY FILTERS -->
+  <script>
+    (() => {
+      const tabs = document.querySelectorAll(".menu-tab");
+      const groups = document.querySelectorAll(".menu-group");
+
+      if (!tabs.length || !groups.length) return;
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const category = tab.dataset.category || "all";
+
+          tabs.forEach((button) => {
+            button.classList.toggle("active", button === tab);
+          });
+
+          groups.forEach((group) => {
+            const showGroup =
+              category === "all" ||
+              group.dataset.group === category;
+
+            group.hidden = !showGroup;
+          });
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

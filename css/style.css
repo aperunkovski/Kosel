@@ -1,0 +1,2629 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap");
+:root {
+  --paper: #f4eadb;
+  --ink: #3d1714;
+  --wine: #4b1716;
+  --wine-dark: #32100f;
+  --muted: #76584a;
+  --line: rgba(80, 42, 31, 0.2);
+  --serif: Cormorant Garamond, Playfair Display, Georgia, serif;
+  --sans: DM Sans, Arial, sans-serif;
+  --inside-gutter: clamp(22px, 6.2vw, 96px);
+  --section-space: clamp(58px, 7vw, 108px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #f4eadb;
+  color: #3d1714;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image: radial-gradient(rgba(77, 31, 24, 0.1) 0.65px, transparent 0.65px), linear-gradient(90deg, transparent 49.8%, rgba(110, 75, 55, 0.025) 50%, transparent 50.2%);
+  background-size: 7px 7px, 80px 100%;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2 {
+  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: clamp(2.3rem, 4vw, 4.3rem);
+}
+
+p {
+  color: #76584a;
+}
+
+section {
+  position: relative;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.site-header {
+  position: relative;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: 180px 1fr 180px;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  padding: 0 clamp(22px, 6.2vw, 96px);
+  background: rgba(248, 242, 232, 0.96);
+  border-bottom: 1px solid rgba(80, 42, 31, 0.2);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: -moz-max-content;
+  width: max-content;
+  color: #3d1714;
+  line-height: 1;
+}
+.brand span {
+  font: 500 30px/1 "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  letter-spacing: 0.1em;
+}
+.brand small {
+  margin-top: 5px;
+  font: 500 8px "DM Sans", Arial, sans-serif;
+  letter-spacing: 0.38em;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(15px, 2.1vw, 34px);
+}
+.main-nav a {
+  position: relative;
+  padding: 8px 0;
+  color: #5b4237;
+  font: 500 clamp(14px, 1.05vw, 16px) "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  letter-spacing: 0.035em;
+  white-space: nowrap;
+}
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #4b1716;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s ease;
+}
+.main-nav a:hover::after, .main-nav a.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.language-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #a38b78;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+.language-switch button {
+  padding: 7px 0;
+  border: 0;
+  background: transparent;
+  color: #9b8070;
+  font: 600 10px "DM Sans", Arial, sans-serif;
+  letter-spacing: 0.12em;
+}
+.language-switch button.is-active {
+  color: #3d1714;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.language-switch button:hover {
+  color: #4b1716;
+}
+
+.menu-toggle {
+  display: none;
+  width: 32px;
+  height: 30px;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+}
+.menu-toggle span {
+  display: block;
+  width: 23px;
+  height: 1px;
+  background: #3d1714;
+  transition: transform 0.3s, width 0.3s;
+}
+.menu-toggle span:nth-child(2) {
+  width: 17px;
+  margin-left: auto;
+}
+.menu-toggle:hover span:nth-child(2) {
+  width: 23px;
+}
+.menu-toggle[aria-expanded=true] span:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+.menu-toggle[aria-expanded=true] span:nth-child(2) {
+  width: 23px;
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+.eyebrow {
+  margin-bottom: 16px;
+  color: #9a684f;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  line-height: 1.7;
+}
+
+.eyebrow.light {
+  color: #e6c7ab;
+}
+
+.section-frame {
+  position: relative;
+  border: 0;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  min-height: 47px;
+  padding: 0 20px;
+  border: 1px solid transparent;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  transition: background 0.25s, color 0.25s, transform 0.25s, border-color 0.25s;
+}
+.button b {
+  display: none !important;
+}
+.button:hover {
+  transform: translateY(-3px);
+}
+
+.button-outline {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  color: white;
+}
+.button-outline:hover {
+  background: #fbf5eb;
+  color: #4b1716;
+}
+
+.button-dark {
+  background: #4b1716;
+  color: white;
+}
+.button-dark:hover {
+  background: #32100f;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 15px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #4b1716;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+.text-link span:last-child {
+  font-size: 17px;
+  transition: transform 0.25s;
+}
+.text-link:hover span:last-child {
+  transform: translateX(5px);
+}
+
+body.preloader-active {
+  overflow: hidden;
+}
+
+.site-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 40%, #fff9ef, #f4eadb 60%, #ead8c2);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.7s, visibility 0.7s;
+}
+.site-preloader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(340px, 85vw);
+  text-align: center;
+}
+
+.preloader-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 19px;
+  color: #4b1716;
+}
+.preloader-brand span {
+  font: 500 clamp(42px, 5vw, 55px)/1 "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  letter-spacing: 0.12em;
+}
+.preloader-brand small {
+  margin-top: 7px;
+  font: 500 9px "DM Sans", Arial, sans-serif;
+  letter-spacing: 0.48em;
+}
+
+.preloader-glass {
+  width: 78px;
+  height: 112px;
+  margin: 5px 0 19px;
+}
+.preloader-glass svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.glass-outline,
+.glass-rim {
+  fill: none;
+  stroke: #4b1716;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.glass-highlight {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.wine-liquid {
+  fill: #9a684f;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  transform: scaleY(0.02);
+  animation: wineFill 1.45s cubic-bezier(0.22, 0.72, 0.25, 1) forwards;
+}
+
+.wine-bubble {
+  fill: #4b1716;
+  opacity: 0;
+  animation: wineBubble 1.1s ease-in-out infinite;
+}
+
+.bubble-one {
+  animation-delay: 0.2s;
+}
+
+.bubble-two {
+  animation-delay: 0.45s;
+}
+
+.bubble-three {
+  animation-delay: 0.7s;
+}
+
+.preloader-caption {
+  margin: 0 0 17px;
+  color: #4b1716;
+  font-size: 9px;
+  letter-spacing: 0.24em;
+}
+
+.preloader-track {
+  width: 180px;
+  height: 1px;
+  overflow: hidden;
+  background: rgba(85, 39, 28, 0.15);
+}
+.preloader-track span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #4b1716;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: preloaderProgress 1.5s ease forwards;
+}
+
+@keyframes wineFill {
+  0% {
+    transform: scaleY(0.02);
+  }
+  70% {
+    transform: scaleY(0.78);
+  }
+  88% {
+    transform: scaleY(0.94);
+  }
+  100% {
+    transform: scaleY(0.91);
+  }
+}
+@keyframes wineBubble {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  45% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+}
+@keyframes preloaderProgress {
+  to {
+    transform: scaleX(1);
+  }
+}
+.hero {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 90dvh;
+  min-height: 480px;
+  overflow: hidden;
+  color: white;
+}
+.hero .hero-image,
+.hero .hero-shade {
+  position: absolute;
+  inset: 0;
+}
+.hero .hero-image {
+  background: url("/img/herooo1.jpg") center 54%/cover;
+  animation: heroDrift 24s ease-in-out infinite alternate;
+}
+.hero .hero-shade {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(15, 4, 4, 0.72) 0%, rgba(20, 6, 5, 0.55) 28%, rgba(25, 8, 7, 0.32) 55%, rgba(25, 8, 7, 0.2) 80%, rgba(25, 8, 7, 0.24) 100%), linear-gradient(90deg, rgba(15, 4, 4, 0.22) 0%, rgba(20, 6, 5, 0.04) 30%, rgba(20, 6, 5, 0.04) 70%, rgba(15, 4, 4, 0.22) 100%), linear-gradient(0deg, rgba(20, 7, 6, 0.28) 0%, transparent 50%, rgba(20, 7, 6, 0.12) 100%);
+}
+.hero .hero-copy.reveal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(850px, 100% - 48px);
+  max-width: 850px;
+  margin: 0;
+  text-align: center;
+  transform: translate(-50%, calc(-50% + 20px));
+}
+.hero .hero-copy.reveal.is-visible {
+  transform: translate(-50%, -50%);
+}
+.hero h1 {
+  width: 100%;
+  margin: 14px 0 23px;
+  color: white;
+  font-size: clamp(3.4rem, 6.3vw, 6.9rem);
+  line-height: 1.04;
+  text-align: center;
+  text-wrap: balance;
+}
+.hero .hero-copy > p:not(.eyebrow) {
+  width: 100%;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(13px, 1.15vw, 16px);
+  line-height: 1.9;
+  text-align: center;
+}
+.hero .hero-copy .button {
+  align-self: center;
+  margin: 8px auto 0;
+}
+
+.hero-counter,
+.scroll-cue {
+  display: none !important;
+}
+
+@keyframes heroDrift {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.07);
+  }
+}
+.wine-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.78fr) minmax(0, 2.2fr);
+  align-items: center;
+  gap: clamp(30px, 4vw, 64px);
+  min-height: clamp(510px, 43vw, 610px);
+  padding: clamp(75px, 7.5vw, 115px) clamp(22px, 6.2vw, 96px);
+  overflow: hidden;
+  background: #f4eadb;
+  color: #3d1714;
+}
+.wine-section::before {
+  content: "KOSEL · WINE COLLECTION";
+  position: absolute;
+  top: 25px;
+  right: clamp(22px, 6.2vw, 96px);
+  color: rgba(76, 23, 22, 0.42);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+}
+
+.section-intro {
+  position: relative;
+  align-self: center;
+  max-width: 330px;
+}
+.section-intro .eyebrow {
+  margin-bottom: 18px;
+  font-size: 11px;
+  letter-spacing: 0.21em;
+}
+.section-intro h2 {
+  margin-bottom: 22px;
+  color: #3d1714;
+  font-size: clamp(3rem, 4.6vw, 4.7rem);
+  line-height: 1.04;
+}
+.section-intro > p:not(.eyebrow) {
+  max-width: 320px;
+  color: #6f594b;
+  font-size: 14px;
+  line-height: 1.95;
+}
+.section-intro .text-link {
+  margin-top: 19px;
+  font-size: 11px;
+}
+
+.wine-rail {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: clamp(16px, 1.6vw, 22px);
+  width: 100%;
+  min-width: 0;
+  padding: 10px 2px 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.wine-rail::-webkit-scrollbar {
+  display: none;
+}
+.wine-rail > .wine-card {
+  scroll-snap-align: start;
+}
+
+.wine-card {
+  position: relative;
+  flex: 0 0 calc((100% - 44px) / 3);
+  min-width: 0;
+  align-self: stretch;
+  padding: 0 0 20px;
+  border: 1px solid rgba(85, 42, 30, 0.13);
+  background: rgba(255, 250, 242, 0.82);
+  text-align: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.wine-card:hover {
+  border-color: rgba(76, 23, 22, 0.32);
+  background: #fffaf2;
+}
+.wine-card h3 {
+  margin: 18px 8px 6px;
+  color: #3d1714;
+  font: 500 clamp(18px, 1.45vw, 23px)/1.25 "Cormorant Garamond", "Playfair Display", Georgia, serif;
+}
+.wine-card p {
+  margin: 0 7px 3px;
+  color: #725b4b;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.wine-card small {
+  display: block;
+  margin-top: 7px;
+  color: #9a7a64;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.bottle-photo {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: clamp(220px, 23vw, 315px);
+  background: #e7d7c1;
+}
+.bottle-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-bottom: 1px solid rgba(79, 33, 22, 0.12);
+}
+.bottle-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  filter: saturate(0.84) contrast(1.03);
+  transform: none;
+  transition: none;
+}
+
+.wine-progress,
+.wine-progress span {
+  display: none !important;
+}
+
+@media (max-width: 1050px) {
+  .wine-section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    min-height: 0;
+    padding: 75px clamp(22px, 6.2vw, 96px) 65px;
+  }
+  .section-intro {
+    max-width: 550px;
+  }
+  .section-intro h2 {
+    font-size: clamp(3rem, 5vw, 4rem);
+  }
+  .section-intro > p:not(.eyebrow) {
+    max-width: 470px;
+  }
+  .wine-rail {
+    gap: 18px;
+  }
+  .wine-card {
+    flex-basis: calc((100% - 18px) / 2);
+  }
+  .wine-card h3 {
+    font-size: 22px;
+  }
+  .bottle-photo {
+    height: clamp(230px, 29vw, 310px);
+  }
+}
+@media (max-width: 760px) {
+  .wine-section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 25px;
+    min-height: 0;
+    padding: 58px 22px 48px;
+  }
+  .wine-section::before {
+    top: 20px;
+    right: 22px;
+    font-size: 8px;
+  }
+  .section-intro {
+    max-width: 100%;
+  }
+  .section-intro h2 {
+    margin-bottom: 16px;
+    font-size: clamp(2.9rem, 10vw, 3.8rem);
+  }
+  .section-intro > p:not(.eyebrow) {
+    max-width: 100%;
+    font-size: 13px;
+  }
+  .section-intro .text-link {
+    margin-top: 13px;
+  }
+  .wine-rail {
+    gap: 15px;
+    margin-right: -22px;
+    padding: 5px 22px 10px 0;
+  }
+  .wine-card {
+    flex: 0 0 82%;
+    padding-bottom: 18px;
+  }
+  .wine-card h3 {
+    margin-top: 15px;
+    font-size: 22px;
+  }
+  .wine-card p {
+    font-size: 12px;
+  }
+  .bottle-photo {
+    height: clamp(220px, 65vw, 290px);
+  }
+}
+@media (max-width: 380px) {
+  .wine-card {
+    flex-basis: 88%;
+  }
+  .bottle-photo {
+    height: 225px;
+  }
+}
+.bottle-banner {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: clamp(380px, 42vw, 560px);
+  padding: clamp(50px, 7vw, 100px) clamp(22px, 5vw, 75px);
+  overflow: hidden;
+  background: #4b1716;
+  color: white;
+}
+.bottle-banner > img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: saturate(0.65) brightness(0.55);
+  transition: transform 1.2s;
+}
+.bottle-banner:hover > img {
+  transform: scale(1.035);
+}
+.bottle-banner .bottle-banner-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(115deg, rgba(46, 10, 10, 0.75), rgba(74, 21, 20, 0.6) 50%, rgba(41, 10, 9, 0.8));
+}
+
+.banner-word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: rgba(255, 239, 219, 0.037);
+  font: clamp(10rem, 27vw, 33rem)/0.78 "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  letter-spacing: -0.055em;
+  white-space: nowrap;
+  text-align: center;
+  transform: translate(-50%, -50%) scale(1.08, 1.32);
+  pointer-events: none;
+}
+
+.banner-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(1000px, 90%);
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+.banner-copy .eyebrow {
+  margin-bottom: 22px;
+  color: #e6c7ab;
+  letter-spacing: 0.2em;
+}
+.banner-copy h2 {
+  max-width: 950px;
+  margin: 0 auto 22px;
+  color: #fbf5eb;
+  font-size: clamp(2.55rem, 5.2vw, 5.4rem);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.banner-copy > p:not(.eyebrow) {
+  max-width: 690px;
+  margin: 0 auto;
+  color: #ead9c9;
+  font-size: clamp(13px, 1.25vw, 16px);
+  line-height: 1.9;
+}
+
+.banner-script {
+  display: none !important;
+}
+
+.story-section {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  align-items: center;
+  gap: clamp(32px, 5.4vw, 78px);
+  padding: clamp(58px, 7vw, 108px) clamp(22px, 6.2vw, 96px);
+  background: #f4eadb;
+  color: #3d1714;
+}
+
+.story-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 0;
+  padding: 15px 0;
+}
+.story-copy .eyebrow {
+  color: #9a684f;
+}
+.story-copy h2 {
+  font-size: clamp(2.8rem, 4.1vw, 4.2rem);
+}
+.story-copy > p:not(.eyebrow) {
+  max-width: 450px;
+  color: #6f594b;
+  line-height: 1.9;
+}
+.story-copy .button-dark {
+  margin-top: 9px;
+}
+
+.story-photo {
+  height: clamp(300px, 32vw, 450px);
+  min-width: 0;
+  overflow: hidden;
+}
+.story-photo img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.story-photo:hover img {
+  transform: scale(1.045);
+}
+
+.stamp {
+  display: none !important;
+}
+
+.menu-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(34px, 6vw, 90px);
+  padding: clamp(42px, 5vw, 72px) clamp(22px, 6.2vw, 96px);
+  background: #4b1716;
+  color: white;
+}
+
+.feature-photo {
+  height: clamp(300px, 34vw, 470px);
+  min-width: 0;
+  overflow: hidden;
+}
+.feature-photo img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  filter: saturate(0.82);
+  transition: transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.feature-photo:hover img {
+  transform: scale(1.045);
+}
+
+.feature-copy {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 0;
+  padding: 20px clamp(4px, 2vw, 30px);
+}
+.feature-copy .eyebrow {
+  color: #dbb99f;
+}
+.feature-copy h2 {
+  color: white;
+  font-size: clamp(2.7rem, 4.2vw, 4.2rem);
+  line-height: 1.06;
+}
+.feature-copy > p:not(.eyebrow) {
+  max-width: 470px;
+  color: #e7d2c2;
+  line-height: 1.9;
+}
+.feature-copy .button-dark {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  color: white;
+}
+.feature-copy .button-dark:hover {
+  background: #fbf5eb;
+  color: #4b1716;
+}
+
+.sketch {
+  position: absolute;
+  pointer-events: none;
+  color: rgba(255, 238, 218, 0.15);
+}
+
+.sketch-plate {
+  right: 2%;
+  bottom: 3%;
+  font-size: 180px;
+  transform: rotate(-20deg);
+}
+
+/* ==========================================
+   EVENTS — CLEAN, CONNECTED LAYOUT
+========================================== */
+.events-section {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  grid-template-rows: auto;
+  grid-template-areas: "copy photo";
+  align-items: center;
+  gap: clamp(30px, 5vw, 70px);
+  width: 100%;
+  min-height: 0 !important;
+  padding: clamp(50px, 7vw, 95px) clamp(22px, 6.2vw, 96px);
+  background: #f4eadb;
+  color: #3d1714;
+  overflow: hidden;
+}
+
+.events-copy {
+  grid-area: copy;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  padding: 0 !important;
+  border: 0;
+}
+.events-copy .eyebrow {
+  margin-bottom: 14px;
+  color: #9a684f;
+  letter-spacing: 0.18em;
+}
+.events-copy h2 {
+  max-width: 540px;
+  margin-bottom: 18px;
+  color: #3d1714;
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  line-height: 1.06;
+}
+.events-copy > p:not(.eyebrow) {
+  max-width: 490px;
+  margin-bottom: 8px;
+  color: #6f594b;
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+/* Keep the image visible and contained in its own column. */
+.events-section .events-photo,
+.events-section .events-photo.reveal {
+  grid-area: photo;
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: clamp(300px, 32vw, 430px) !important;
+  min-height: 0 !important;
+  max-height: 430px;
+  overflow: hidden;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+.events-section .events-photo img {
+  position: relative !important;
+  inset: auto !important;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* ==========================================
+   VERSION A — .event-list WITH SPAN ITEMS
+========================================== */
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  width: 100%;
+  max-width: 540px;
+  margin: 22px 0 27px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+.event-list span {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  min-height: 59px;
+  padding: 12px 10px 12px 17px;
+  border: 0;
+  border-bottom: 1px solid rgba(83, 42, 30, 0.16);
+  background: transparent;
+  color: #705748;
+  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.35;
+}
+.event-list span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #9a684f;
+  transform: translateY(-50%);
+}
+.event-list span::after {
+  content: none;
+}
+.event-list span:hover {
+  color: #4b1716;
+}
+.event-list i {
+  display: none;
+}
+
+/* ==========================================
+   VERSION B — .event-types-grid WITH ARTICLES
+========================================== */
+.event-types-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  width: 100%;
+  max-width: 540px;
+  margin: 22px 0 27px;
+  padding: 0;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.event-types-grid .event-type {
+  display: grid !important;
+  grid-template-columns: 26px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-items: center;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+  min-width: 0;
+  min-height: 68px;
+  padding: 12px 10px;
+  border: 0;
+  border-bottom: 1px solid rgba(83, 42, 30, 0.16);
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+.event-types-grid .event-type:nth-child(odd) {
+  border-right: 1px solid rgba(83, 42, 30, 0.13);
+}
+.event-types-grid .event-type:nth-last-child(-n+2) {
+  border-bottom: 0;
+}
+.event-types-grid .event-type:hover {
+  padding: 12px 10px;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.event-types-grid .event-type .event-number {
+  grid-column: 1;
+  grid-row: 1/3;
+  color: #9a684f;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+.event-types-grid .event-type h3 {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  color: #3d1714;
+  font: 500 clamp(17px, 1.45vw, 21px)/1.2 "Cormorant Garamond", "Playfair Display", Georgia, serif;
+}
+.event-types-grid .event-type p {
+  grid-column: 2;
+  grid-row: 2;
+  margin: 4px 0 0;
+  color: #806656;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+@media (max-width: 760px) {
+  .events-section {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto auto;
+    grid-template-areas: "copy" "photo";
+    gap: 25px;
+    padding: 45px 22px;
+  }
+  .events-copy {
+    grid-area: copy;
+  }
+  .events-copy h2 {
+    font-size: clamp(2.5rem, 9vw, 3.3rem);
+  }
+  .events-copy > p:not(.eyebrow) {
+    font-size: 13px;
+  }
+  .events-section .events-photo,
+  .events-section .events-photo.reveal {
+    grid-area: photo;
+    width: 100% !important;
+    height: 260px !important;
+    max-height: 260px;
+  }
+  .event-list,
+  .event-types-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 100%;
+    margin: 19px 0 24px;
+  }
+  .event-list span {
+    min-height: 55px;
+    padding: 11px 5px 11px 14px;
+    font-size: 17px;
+  }
+  .event-types-grid .event-type {
+    grid-template-columns: 22px minmax(0, 1fr);
+    min-height: 62px;
+    padding: 10px 6px;
+    -moz-column-gap: 3px;
+         column-gap: 3px;
+  }
+  .event-types-grid .event-type h3 {
+    font-size: 17px;
+  }
+  .event-types-grid .event-type p {
+    font-size: 9px;
+  }
+  .event-types-grid .event-type:hover {
+    padding: 10px 6px;
+  }
+}
+@media (max-width: 380px) {
+  .event-list,
+  .event-types-grid {
+    grid-template-columns: 1fr;
+  }
+  .event-types-grid .event-type:nth-child(odd) {
+    border-right: 0;
+  }
+  .event-types-grid .event-type:nth-last-child(-n+2) {
+    border-bottom: 1px solid rgba(83, 42, 30, 0.16);
+  }
+  .event-types-grid .event-type:last-child {
+    border-bottom: 0;
+  }
+}
+.testimonials {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(58px, 7vw, 108px) clamp(22px, 6.2vw, 96px);
+  background: #4b1716;
+  color: white;
+}
+.testimonials::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: clamp(22px, 6.2vw, 96px);
+  left: clamp(22px, 6.2vw, 96px);
+  height: 1px;
+  background: rgba(255, 235, 220, 0.18);
+}
+
+.testimonials-heading {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+.testimonials-heading .eyebrow,
+.testimonials-heading h2 {
+  color: white;
+}
+.testimonials-heading > p:not(.eyebrow) {
+  color: #e6cdbc;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px);
+  max-width: 1280px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.review-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  min-height: 230px;
+  padding: clamp(23px, 3vw, 38px);
+  border: 1px solid rgba(255, 239, 222, 0.22);
+  background: rgba(255, 247, 237, 0.045);
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.5s, border-color 0.5s, box-shadow 0.5s;
+}
+.review-card::before {
+  content: "“";
+  position: absolute;
+  top: 0;
+  right: 15px;
+  color: rgba(230, 191, 158, 0.09);
+  font: 100px/0.9 "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  pointer-events: none;
+}
+.review-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #cfaa88;
+  transition: width 0.5s;
+}
+.review-card:hover {
+  transform: translateY(-9px) rotateX(1deg);
+  background: rgba(255, 247, 237, 0.085);
+  border-color: rgba(255, 226, 200, 0.42);
+  box-shadow: 0 22px 38px rgba(27, 7, 6, 0.17);
+}
+.review-card:hover::after {
+  width: 100%;
+}
+.review-card .stars {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 13px;
+  color: #dfb994;
+  letter-spacing: 0.2em;
+}
+.review-card p {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  color: #f0ddd0;
+  font: 15px/1.9 "Cormorant Garamond", "Playfair Display", Georgia, serif;
+}
+.review-card b {
+  margin-top: 15px;
+  color: #d8bdab;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reservation-band {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+  align-items: center;
+  gap: clamp(45px, 6vw, 90px);
+  min-height: 390px;
+  padding: clamp(65px, 7vw, 100px) clamp(22px, 6.2vw, 96px);
+  background: #e9dac5;
+  color: #3d1714;
+}
+
+.reservation-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(90deg, rgba(246, 237, 222, 0.87), rgba(246, 237, 222, 0.78) 52%, rgba(246, 237, 222, 0.86)), url("https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=2000&q=90");
+  background-size: cover;
+  background-position: center 54%;
+}
+
+.reservation-copy {
+  position: relative;
+  align-self: center;
+  width: 100%;
+  max-width: 650px;
+}
+.reservation-copy h2 {
+  margin-bottom: 22px;
+  color: #3d1714;
+  font-size: clamp(3rem, 4.5vw, 4.5rem);
+  line-height: 1.06;
+}
+.reservation-copy .eyebrow {
+  margin-bottom: 17px;
+  color: #9a684f;
+}
+.reservation-copy > p:not(.eyebrow) {
+  max-width: 560px;
+  margin-bottom: 23px;
+  color: #6f594b;
+  font-size: 15px;
+  line-height: 1.9;
+}
+.reservation-copy .button-outline {
+  min-height: 49px;
+  padding: 0 23px;
+  border: 1px solid #8b5a48;
+  background: transparent;
+  color: #4b1716;
+}
+.reservation-copy .button-outline:hover {
+  background: #4b1716;
+  color: #fff;
+}
+
+.reservation-details {
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  max-width: 440px;
+  margin: 0;
+  padding-left: 32px;
+  border-left: 1px solid rgba(76, 23, 22, 0.22);
+}
+.reservation-details p {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 0 0 21px;
+  color: #573b30;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.reservation-details p:last-of-type {
+  margin-bottom: 0;
+}
+.reservation-details p span:first-child {
+  flex: 0 0 22px;
+  color: #98684d;
+  font-size: 19px;
+  text-align: center;
+}
+
+.reservation-socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 25px;
+}
+.reservation-socials a {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(76, 23, 22, 0.32);
+  border-radius: 50%;
+  background: transparent;
+  color: #4b1716;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.reservation-socials a:hover {
+  background: #4b1716;
+  border-color: #4b1716;
+  color: #fbf5eb;
+}
+.reservation-socials svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.reservation-socials .social-dot,
+.reservation-socials .facebook-mark {
+  fill: currentColor;
+  stroke: none;
+}
+
+@media (max-width: 1050px) {
+  .reservation-band {
+    grid-template-columns: minmax(0, 1.05fr) minmax(290px, 0.95fr);
+    gap: 35px;
+    padding: 70px clamp(22px, 6.2vw, 96px);
+  }
+  .reservation-copy h2 {
+    font-size: clamp(2.7rem, 4.5vw, 3.8rem);
+  }
+  .reservation-copy > p:not(.eyebrow) {
+    font-size: 14px;
+  }
+  .reservation-details {
+    max-width: 390px;
+    padding-left: 25px;
+  }
+  .reservation-details p {
+    gap: 12px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 760px) {
+  .reservation-band {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    min-height: 0;
+    padding: 52px 22px;
+  }
+  .reservation-copy {
+    max-width: 100%;
+  }
+  .reservation-copy h2 {
+    font-size: clamp(2.8rem, 10vw, 3.7rem);
+  }
+  .reservation-copy > p:not(.eyebrow) {
+    font-size: 14px;
+    line-height: 1.85;
+  }
+  .reservation-details {
+    justify-self: stretch;
+    width: 100%;
+    max-width: 100%;
+    padding: 23px 0 0;
+    border-top: 1px solid rgba(76, 23, 22, 0.22);
+    border-left: 0;
+  }
+  .reservation-details p {
+    gap: 13px;
+    margin-bottom: 17px;
+    font-size: 14px;
+  }
+  .reservation-socials {
+    gap: 12px;
+    margin-top: 22px;
+  }
+  .reservation-socials a {
+    width: 39px;
+    height: 39px;
+  }
+}
+@media (max-width: 380px) {
+  .reservation-band {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+  .reservation-details p {
+    font-size: 13px;
+  }
+}
+.site-footer {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1.1fr 1fr;
+  gap: 45px;
+  width: 100%;
+  padding: clamp(45px, 6vw, 80px) clamp(22px, 6.2vw, 96px) 22px;
+  background: #32100f;
+  color: #fbf5eb;
+}
+.site-footer .brand-light {
+  color: #fbf5eb;
+}
+.site-footer .footer-brand > p {
+  max-width: 230px;
+  margin-top: 22px;
+  color: #cdb9a7;
+  font-size: 12px;
+}
+.site-footer .footer-column h3,
+.site-footer .footer-map h3 {
+  margin: 0 0 17px;
+  color: #fbf5eb;
+  font: 16px "Cormorant Garamond", "Playfair Display", Georgia, serif;
+}
+.site-footer .footer-column a,
+.site-footer .footer-column p {
+  display: block;
+  margin: 0 0 9px;
+  color: #cdb9a7;
+  font-size: 11px;
+}
+.site-footer .footer-column a:hover {
+  color: white;
+}
+.site-footer .footer-column .hours-title {
+  margin-top: 22px;
+}
+.site-footer .footer-bottom {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 15px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(247, 236, 221, 0.18);
+  color: #bda797;
+  font-size: 9px;
+}
+
+.social-links {
+  display: flex;
+  gap: 9px;
+}
+.social-links a {
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  font-size: 12px;
+  transition: background 0.25s;
+}
+.social-links a:hover {
+  background: #7b3a2c;
+}
+
+.map-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 105px;
+  margin-bottom: 8px;
+  background-color: #e6d7c2;
+  background-image: linear-gradient(30deg, transparent 46%, rgba(85, 65, 49, 0.2) 47%, rgba(85, 65, 49, 0.2) 49%, transparent 50%), linear-gradient(120deg, transparent 46%, rgba(85, 65, 49, 0.18) 47%, rgba(85, 65, 49, 0.18) 49%, transparent 50%);
+  background-size: 35px 35px;
+  color: #4b1716;
+}
+.map-placeholder span {
+  font-size: 25px;
+}
+.map-placeholder b {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.footer-map .text-link {
+  color: #e4cbb6;
+  border-color: #8d6552;
+  font-size: 9px;
+}
+
+.menu-page {
+  position: relative;
+  background: radial-gradient(ellipse at 12% 8%, rgba(154, 104, 79, 0.09) 0%, transparent 35%), linear-gradient(135deg, #fbf5eb 0%, #f4eadb 48%, #f8efe3 100%);
+  color: #4b1716;
+}
+.menu-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(77, 31, 24, 0.22) 0.65px, transparent 0.9px);
+  background-size: 11px 11px;
+  opacity: 0.13;
+  mix-blend-mode: multiply;
+}
+.menu-page .site-header {
+  background: rgba(248, 242, 232, 0.97);
+  border-bottom: 1px solid rgba(80, 42, 31, 0.2);
+}
+.menu-page .brand,
+.menu-page .main-nav a,
+.menu-page .language-switch button {
+  color: #4b1716;
+}
+.menu-page .main-nav a::after {
+  background: #8c4233;
+}
+.menu-page .menu-toggle span {
+  background: #4b1716;
+}
+.menu-page .site-footer {
+  background: radial-gradient(ellipse at 12% 0%, rgba(151, 76, 59, 0.2), transparent 50%), linear-gradient(130deg, #481816 0%, #32100f 100%);
+}
+.menu-page .site-footer .footer-column h3 {
+  color: #fbf5eb;
+}
+.menu-page .site-footer .footer-column a,
+.menu-page .site-footer .footer-column p {
+  color: #d9c1b0;
+}
+.menu-page .site-footer .footer-bottom {
+  border-color: rgba(244, 234, 219, 0.24);
+  color: #cdb4a2;
+}
+
+.menu-main {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.menu-heading {
+  position: relative;
+  padding: clamp(42px, 5.5vw, 76px) clamp(22px, 6.2vw, 96px) clamp(35px, 4.5vw, 58px);
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 0%, rgba(154, 104, 79, 0.12) 0%, transparent 62%), linear-gradient(135deg, #fbf5eb 0%, #f4eadb 100%);
+  color: #4b1716;
+  text-align: center;
+}
+.menu-heading .menu-heading-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 1280px;
+  margin: 0 auto 23px;
+  color: #9d765e;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+}
+.menu-heading .menu-heading-rule span:first-child {
+  flex-shrink: 0;
+  color: #6a231e;
+  font: 500 17px "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  letter-spacing: 0.15em;
+}
+.menu-heading .menu-heading-rule span:last-child {
+  white-space: nowrap;
+}
+.menu-heading .menu-heading-rule i {
+  flex: 1;
+  max-width: 170px;
+  height: 1px;
+  background: rgba(80, 42, 31, 0.28);
+}
+.menu-heading h1 {
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #4b1716;
+  font: 400 clamp(3.2rem, 7vw, 6.5rem)/1.03 "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.menu-content {
+  padding: 0 clamp(22px, 6.2vw, 96px) clamp(65px, 8vw, 105px);
+  background: transparent;
+  color: #4b1716;
+}
+
+.menu-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 22px 0 25px;
+  border-top: 1px solid rgba(80, 42, 31, 0.23);
+  border-bottom: 1px solid rgba(80, 42, 31, 0.23);
+}
+
+.menu-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.menu-tab {
+  padding: 11px 17px;
+  border: 1px solid rgba(80, 42, 31, 0.24);
+  border-radius: 0;
+  background: transparent;
+  color: #765346;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+.menu-tab:hover, .menu-tab.active {
+  border-color: #4b1716;
+  background: #4b1716;
+  color: #fbf5eb;
+}
+.menu-tab:focus-visible {
+  outline: 2px solid #a98062;
+  outline-offset: 3px;
+}
+
+.menu-lists {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  -moz-column-gap: clamp(32px, 6vw, 88px);
+       column-gap: clamp(32px, 6vw, 88px);
+  row-gap: 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: clamp(22px, 3vw, 38px);
+}
+
+.menu-group {
+  min-width: 0;
+  padding: 27px 0 30px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(80, 42, 31, 0.2);
+}
+.menu-group[hidden] {
+  display: none !important;
+}
+
+.menu-group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 9px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(80, 42, 31, 0.2);
+}
+.menu-group-head > span {
+  flex-shrink: 0;
+  color: #a98062;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+}
+.menu-group-head h2 {
+  margin: 0;
+  color: #4b1716;
+  font: 400 clamp(1.7rem, 2.4vw, 2.35rem)/1.2 "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  letter-spacing: -0.025em;
+}
+
+.menu-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 17px 0;
+  border-top: 1px solid rgba(80, 42, 31, 0.09);
+  transition: padding-left 0.25s ease, border-color 0.25s ease;
+}
+.menu-row:first-child {
+  border-top: 0;
+}
+.menu-row:hover {
+  padding-left: 4px;
+  border-top-color: rgba(80, 42, 31, 0.2);
+}
+.menu-row > div {
+  min-width: 0;
+}
+.menu-row h3 {
+  margin: 0 0 6px;
+  color: #4b1c18;
+  font: 500 clamp(1rem, 1.25vw, 1.15rem)/1.35 "Cormorant Garamond", "Playfair Display", Georgia, serif;
+}
+.menu-row p {
+  margin: 0;
+  color: #806656;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1.75;
+}
+.menu-row strong,
+.menu-row .menu-price {
+  flex-shrink: 0;
+  padding-top: 3px;
+  color: #8e4a38;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  white-space: nowrap;
+}
+
+.menu-cta {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(30px, 5vw, 75px);
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: 0;
+  margin-bottom: 80px;
+  box-sizing: border-box;
+  padding: clamp(60px, 7vw, 100px) clamp(24px, 8.5vw, 160px);
+  overflow: hidden;
+  background: radial-gradient(ellipse at 12% 12%, rgba(165, 91, 68, 0.24) 0%, transparent 42%), radial-gradient(ellipse at 90% 90%, rgba(20, 4, 5, 0.2) 0%, transparent 45%), linear-gradient(125deg, #59201e 0%, #481816 52%, #32100f 100%);
+  color: #fbf5eb;
+}
+.menu-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(251, 245, 235, 0.2) 0.7px, transparent 0.9px);
+  background-size: 13px 13px;
+  opacity: 0.24;
+}
+.menu-cta > div {
+  max-width: 850px;
+}
+.menu-cta .eyebrow {
+  margin-bottom: 18px;
+  color: #e4c4a8;
+  letter-spacing: 0.2em;
+}
+.menu-cta h2 {
+  margin: 0 0 22px;
+  color: #fbf5eb;
+  font: 400 clamp(2.6rem, 4.8vw, 5rem)/1.08 "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  letter-spacing: -0.035em;
+}
+.menu-cta p:not(.eyebrow) {
+  max-width: 580px;
+  margin: 0;
+  color: rgba(251, 245, 235, 0.82);
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.9;
+}
+.menu-cta .button-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-shrink: 0;
+  min-height: 54px;
+  padding: 0 27px;
+  border: 1px solid rgba(251, 245, 235, 0.75);
+  border-radius: 0;
+  background: transparent;
+  color: #fbf5eb;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.menu-cta .button-outline b {
+  font-size: 16px;
+  font-weight: 400;
+  transition: transform 0.25s ease;
+}
+.menu-cta .button-outline:hover {
+  border-color: #fbf5eb;
+  background: #fbf5eb;
+  color: #4b1716;
+}
+.menu-cta .button-outline:hover b {
+  transform: translateX(3px);
+}
+
+@media (max-width: 1000px) {
+  .menu-heading {
+    padding-top: 48px;
+    padding-bottom: 42px;
+  }
+  .menu-lists {
+    -moz-column-gap: 34px;
+         column-gap: 34px;
+  }
+  .menu-tabs {
+    gap: 7px;
+  }
+  .menu-tab {
+    padding: 10px 13px;
+  }
+  .menu-cta {
+    gap: 30px;
+    padding: 65px clamp(22px, 6.2vw, 96px);
+  }
+  .menu-cta h2 {
+    font-size: clamp(2.5rem, 5.5vw, 4rem);
+  }
+}
+@media (max-width: 760px) {
+  .menu-heading {
+    padding: 42px 22px 35px;
+  }
+  .menu-heading .menu-heading-rule {
+    gap: 10px;
+    margin-bottom: 21px;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+  }
+  .menu-heading .menu-heading-rule span:first-child {
+    font-size: 15px;
+  }
+  .menu-heading .menu-heading-rule i {
+    max-width: 36px;
+  }
+  .menu-heading h1 {
+    font-size: clamp(2.7rem, 10.5vw, 4.1rem);
+    line-height: 1.05;
+  }
+  .menu-content {
+    padding: 0 22px 60px;
+  }
+  .menu-toolbar {
+    padding: 18px 0 20px;
+  }
+  .menu-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    width: 100%;
+  }
+  .menu-tab {
+    min-height: 41px;
+    padding: 9px 5px;
+    font-size: 10px;
+    letter-spacing: 0.015em;
+  }
+  .menu-lists {
+    grid-template-columns: 1fr;
+    row-gap: 0;
+    padding-top: 20px;
+  }
+  .menu-group {
+    padding: 24px 0 25px;
+  }
+  .menu-group-head {
+    gap: 12px;
+    margin-bottom: 7px;
+    padding-bottom: 12px;
+  }
+  .menu-group-head h2 {
+    font-size: 1.85rem;
+  }
+  .menu-row {
+    gap: 12px;
+    padding: 15px 0;
+  }
+  .menu-row h3 {
+    font-size: 17px;
+  }
+  .menu-row p {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .menu-row strong,
+  .menu-row .menu-price {
+    font-size: 11px;
+  }
+  .menu-cta {
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+    margin-bottom: 80px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    padding: 55px 22px 60px;
+  }
+  .menu-cta h2 {
+    font-size: clamp(2.6rem, 10vw, 3.7rem);
+  }
+  .menu-cta p:not(.eyebrow) {
+    font-size: 13px;
+  }
+  .menu-cta .button-outline {
+    min-height: 49px;
+  }
+}
+@media (max-width: 380px) {
+  .menu-heading {
+    padding: 38px 16px 32px;
+  }
+  .menu-heading .menu-heading-rule {
+    gap: 7px;
+  }
+  .menu-heading .menu-heading-rule span:last-child {
+    white-space: normal;
+    text-align: left;
+  }
+  .menu-content {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+  .menu-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .menu-row {
+    gap: 8px;
+  }
+  .menu-row h3 {
+    font-size: 16px;
+  }
+  .menu-cta {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-tab,
+  .menu-row,
+  .menu-cta .button-outline,
+  .menu-cta .button-outline b {
+    transition: none;
+  }
+}
+.story-page-intro {
+  padding: clamp(52px, 7vw, 105px) clamp(22px, 6.2vw, 96px) clamp(42px, 6vw, 80px);
+  background: #f4eadb;
+  text-align: center;
+}
+.story-page-intro h1 {
+  max-width: 1000px;
+  margin: 8px auto 20px;
+  color: #4b1716;
+  font: 400 clamp(3rem, 6vw, 6.3rem)/1.03 "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  letter-spacing: -0.045em;
+}
+.story-page-intro > p:last-child {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #755d4c;
+  line-height: 1.9;
+}
+
+.story-page-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(42px, 7vw, 110px);
+  padding: clamp(45px, 7vw, 100px) clamp(22px, 6.2vw, 96px);
+  background: #eee0cc;
+}
+
+.story-page-photo {
+  min-width: 0;
+  height: clamp(310px, 38vw, 520px);
+  overflow: hidden;
+}
+.story-page-photo img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.story-page-copy {
+  max-width: 600px;
+}
+.story-page-copy h2 {
+  margin-bottom: 25px;
+  font-size: clamp(2.3rem, 4.2vw, 4.1rem);
+}
+.story-page-copy p:not(.eyebrow) {
+  color: #72594a;
+  line-height: 2;
+}
+
+.story-timeline {
+  display: grid;
+  grid-template-columns: 1.15fr repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(22px, 3.5vw, 52px);
+  padding: clamp(58px, 7.5vw, 110px) clamp(22px, 6.2vw, 96px);
+  background: #f4eadb;
+}
+
+.story-timeline-heading h2 {
+  margin: 0;
+  font-size: clamp(2.2rem, 3.6vw, 3.6rem);
+  line-height: 1.1;
+}
+
+.story-timeline-item {
+  min-width: 0;
+  padding-top: 19px;
+  border-top: 1px solid rgba(80, 42, 31, 0.2);
+}
+.story-timeline-item .timeline-mark {
+  display: block;
+  margin-bottom: 19px;
+  color: #a47d61;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+.story-timeline-item .eyebrow {
+  margin-bottom: 10px;
+  color: #9a684f;
+  font-size: 9px;
+}
+.story-timeline-item h3 {
+  margin: 0 0 13px;
+  color: #421b17;
+  font: 500 clamp(1.25rem, 1.65vw, 1.7rem)/1.25 "Cormorant Garamond", "Playfair Display", Georgia, serif;
+}
+.story-timeline-item p:not(.eyebrow) {
+  margin: 0;
+  color: #755d4c;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.story-values {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  align-items: start;
+  gap: clamp(22px, 3vw, 42px);
+  padding: clamp(55px, 7vw, 100px) clamp(22px, 6.2vw, 96px);
+  background: #f4eadb;
+}
+
+.story-values-heading h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.story-value {
+  display: flex;
+  gap: 14px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(80, 42, 31, 0.2);
+}
+.story-value > span {
+  padding-top: 4px;
+  color: #a47c61;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+.story-value h3 {
+  margin: 0 0 9px;
+  color: #421b17;
+  font: 500 19px "Cormorant Garamond", "Playfair Display", Georgia, serif;
+}
+.story-value p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.story-page-end {
+  padding: clamp(55px, 7vw, 100px) clamp(22px, 6.2vw, 96px);
+  margin-bottom: 80px;
+  background: linear-gradient(90deg, rgba(56, 15, 14, 0.8), rgba(56, 15, 14, 0.72)), url("https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=2000&q=90") center/cover;
+  color: white;
+  text-align: center;
+}
+.story-page-end .eyebrow {
+  color: #e4c4a8;
+}
+.story-page-end h2 {
+  max-width: 850px;
+  margin: 0 auto 27px;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.65, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes navIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 1050px) {
+  .site-header {
+    grid-template-columns: 140px 1fr 140px;
+    padding: 0 25px;
+  }
+  .main-nav {
+    gap: 13px;
+  }
+  .main-nav a {
+    font-size: 14px;
+  }
+  .wine-section {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .section-intro {
+    max-width: 570px;
+  }
+  .wine-card {
+    flex-basis: calc((100% - 20px) / 2.4);
+  }
+  .bottle-photo {
+    height: 245px;
+  }
+  .menu-feature,
+  .story-section {
+    gap: 28px;
+  }
+  .review-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .story-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .story-values {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .menu-lists {
+    -moz-column-gap: 35px;
+         column-gap: 35px;
+  }
+  .site-footer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 70px;
+  }
+  .site-header {
+    height: 68px;
+    grid-template-columns: 1fr auto;
+    padding: 0 20px;
+  }
+  .brand span {
+    font-size: 25px;
+  }
+  .header-actions {
+    grid-column: 2;
+    grid-row: 1;
+    gap: 15px;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 68px;
+    right: 0;
+    left: 0;
+    padding: 20px 25px 25px;
+    background: #f4eadb;
+    border-bottom: 1px solid rgba(80, 42, 31, 0.2);
+    box-shadow: 0 18px 25px rgba(42, 18, 12, 0.08);
+    align-items: stretch;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .main-nav.is-open {
+    display: flex;
+    animation: navIn 0.25s ease;
+  }
+  .main-nav a {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(80, 42, 31, 0.1);
+    font-size: 18px;
+  }
+  .main-nav a::after {
+    display: none;
+  }
+  .hero {
+    height: calc(100svh - 68px);
+    min-height: 560px;
+    max-height: 780px;
+  }
+  .hero .hero-image {
+    background-position: 56% center;
+  }
+  .hero .hero-copy.reveal {
+    top: 50%;
+    left: 50%;
+    width: calc(100% - 34px);
+    transform: translate(-50%, calc(-50% + 15px));
+  }
+  .hero .hero-copy.reveal.is-visible {
+    transform: translate(-50%, -50%);
+  }
+  .hero h1 {
+    font-size: clamp(2.7rem, 10vw, 4.2rem);
+  }
+  .wine-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    min-height: 0;
+    padding: 60px 22px;
+  }
+  .wine-section::before {
+    top: 24px;
+    right: 22px;
+    font-size: 7px;
+  }
+  .section-intro h2 {
+    font-size: 2.9rem;
+  }
+  .wine-rail {
+    gap: 14px;
+  }
+  .wine-card {
+    flex-basis: calc((100% - 14px) / 2);
+  }
+  .bottle-photo {
+    height: 205px;
+  }
+  .bottle-banner {
+    min-height: 380px;
+    padding: 48px 22px;
+  }
+  .banner-word {
+    font-size: 27vw;
+    transform: translate(-50%, -50%) scale(1.05, 1.2);
+  }
+  .banner-copy {
+    width: 100%;
+    max-width: 100%;
+  }
+  .banner-copy h2 {
+    font-size: 2.5rem;
+  }
+  .story-section,
+  .menu-feature {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 38px 22px;
+  }
+  .menu-feature .feature-photo,
+  .story-photo {
+    height: 265px;
+  }
+  .feature-copy,
+  .story-copy {
+    min-height: 0;
+    padding: 7px 0 8px;
+  }
+  .feature-copy h2,
+  .story-copy h2 {
+    font-size: 2.85rem;
+  }
+  .events-section {
+    grid-template-columns: 1fr;
+    gap: 27px;
+    padding: 48px 22px;
+  }
+  .events-copy {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 0;
+  }
+  .events-photo {
+    grid-column: 1;
+    grid-row: 2;
+    height: 260px;
+  }
+  .event-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 18px;
+    margin: 18px 0 25px;
+  }
+  .testimonials {
+    padding: 55px 22px;
+  }
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+  .review-card {
+    min-height: 210px;
+  }
+  .reservation-band {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 55px 22px;
+  }
+  .reservation-details {
+    padding: 20px 0 0;
+    border-top: 1px solid rgba(76, 23, 22, 0.2);
+    border-left: 0;
+  }
+  .reservation-socials {
+    margin-top: 18px;
+  }
+  .site-footer {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 18px;
+    padding: 40px 22px 20px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .menu-heading {
+    padding: 32px 22px 39px;
+  }
+  .menu-heading h1 {
+    font-size: 3.55rem;
+  }
+  .menu-heading > p:not(.eyebrow) {
+    font-size: 13px;
+  }
+  .menu-heading-rule {
+    margin-bottom: 35px;
+  }
+  .menu-heading-rule span:last-child {
+    font-size: 8px;
+  }
+  .menu-meta {
+    gap: 8px;
+    font-size: 7px;
+  }
+  .menu-content {
+    padding: 0 22px 55px;
+  }
+  .menu-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .menu-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+  .menu-tab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  .menu-search {
+    min-width: 0;
+  }
+  .menu-lists {
+    grid-template-columns: 1fr;
+  }
+  .menu-group {
+    padding: 22px 0 23px;
+  }
+  .menu-row {
+    gap: 12px;
+  }
+  .menu-row h3 {
+    font-size: 16px;
+  }
+  .menu-cta {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 42px 22px;
+  }
+  .story-page-intro {
+    padding: 48px 22px 40px;
+  }
+  .story-page-intro h1 {
+    font-size: 3.2rem;
+  }
+  .story-page-feature {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 35px 22px 48px;
+  }
+  .story-page-photo {
+    height: 270px;
+  }
+  .story-page-copy h2 {
+    font-size: 2.65rem;
+  }
+  .story-timeline {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 46px 22px;
+  }
+  .story-timeline-heading {
+    margin-bottom: 5px;
+  }
+  .story-timeline-item {
+    padding-top: 15px;
+  }
+  .story-values {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 48px 22px;
+  }
+  .story-values-heading {
+    margin-bottom: 5px;
+  }
+  .story-page-end {
+    padding: 50px 22px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .wine-rail {
+    scroll-behavior: auto;
+  }
+}
+/* RETRO GRADIENT + DOT TEXTURE */
+html {
+  background: #f4eadb;
+}
+
+body {
+  background: radial-gradient(ellipse at 15% 10%, rgba(154, 104, 79, 0.13) 0%, transparent 38%), radial-gradient(ellipse at 85% 45%, rgba(75, 23, 22, 0.07) 0%, transparent 40%), linear-gradient(135deg, #fbf5eb 0%, #f3e7d8 48%, #f8efe3 100%);
+}
+
+/* Sitna retro tekstura na celata stranica */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(75, 23, 22, 0.35) 0.8px, transparent 0.9px);
+  background-size: 11px 11px;
+  opacity: 0.17;
+  mix-blend-mode: multiply;
+}
+
+/* Pomalku tocki na mobilni za pocist izgled */
+@media (max-width: 768px) {
+  body::before {
+    background-size: 13px 13px;
+    opacity: 0.13;
+  }
+}/*# sourceMappingURL=style.css.map */
