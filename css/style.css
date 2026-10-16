@@ -478,7 +478,10 @@ body.preloader-active {
   inset: 0;
 }
 .hero .hero-image {
-  background: url("img/herooo1.jpg") center 54%/cover;
+  background-image: url("../img/herooo1.jpg");
+  background-position: center 54%;
+  background-size: cover;
+  background-repeat: no-repeat;
   animation: heroDrift 24s ease-in-out infinite alternate;
 }
 .hero .hero-shade {
@@ -1639,9 +1642,9 @@ body.preloader-active {
   inset: 0;
   z-index: 20;
   pointer-events: none;
-  background-image: radial-gradient(rgba(77, 31, 24, 0.22) 0.65px, transparent 0.9px);
+  background-image: radial-gradient(rgba(77, 31, 24, 0.25) 0.65px, transparent 0.9px);
   background-size: 11px 11px;
-  opacity: 0.13;
+  opacity: 0.15;
   mix-blend-mode: multiply;
 }
 .menu-page .site-header {
@@ -1660,7 +1663,7 @@ body.preloader-active {
   background: #4b1716;
 }
 .menu-page .site-footer {
-  background: radial-gradient(ellipse at 12% 0%, rgba(151, 76, 59, 0.2), transparent 50%), linear-gradient(130deg, #481816 0%, #32100f 100%);
+  background: radial-gradient(ellipse at 12% 0%, rgba(151, 76, 59, 0.2), transparent 50%), linear-gradient(130deg, #481816, #32100f);
 }
 .menu-page .site-footer .footer-column h3 {
   color: #fbf5eb;
@@ -1789,8 +1792,6 @@ body.preloader-active {
 .menu-group {
   min-width: 0;
   padding: 27px 0 30px;
-  background: transparent;
-  border: 0;
   border-bottom: 1px solid rgba(80, 42, 31, 0.2);
 }
 .menu-group[hidden] {
@@ -1865,6 +1866,45 @@ body.preloader-active {
   font-weight: 600;
   letter-spacing: 0.015em;
   white-space: nowrap;
+}
+
+.menu-group[data-group=wines] {
+  position: relative;
+  margin-top: 18px;
+  padding: 27px 0 30px;
+  overflow: visible;
+  border: 0;
+  border-bottom: 1px solid rgba(80, 42, 31, 0.2);
+  background: radial-gradient(ellipse at 85% 10%, rgba(154, 104, 79, 0.09) 0%, transparent 45%), linear-gradient(135deg, #fbf5eb 0%, #f4eadb 100%);
+  color: #4b1716;
+}
+.menu-group[data-group=wines]::before {
+  display: none;
+}
+.menu-group[data-group=wines] .menu-group-head {
+  border-bottom-color: rgba(80, 42, 31, 0.2);
+}
+.menu-group[data-group=wines] .menu-group-head > span {
+  color: #a98062;
+}
+.menu-group[data-group=wines] .menu-group-head h2 {
+  color: #4b1716;
+}
+.menu-group[data-group=wines] .menu-row {
+  border-top-color: rgba(80, 42, 31, 0.1);
+}
+.menu-group[data-group=wines] .menu-row:hover {
+  border-top-color: rgba(80, 42, 31, 0.2);
+}
+.menu-group[data-group=wines] .menu-row h3 {
+  color: #4b1c18;
+}
+.menu-group[data-group=wines] .menu-row p {
+  color: #806656;
+}
+.menu-group[data-group=wines] .menu-row strong,
+.menu-group[data-group=wines] .menu-row .menu-price {
+  color: #8e4a38;
 }
 
 .menu-cta {
@@ -1955,8 +1995,8 @@ body.preloader-active {
     padding-bottom: 42px;
   }
   .menu-lists {
-    -moz-column-gap: 34px;
-         column-gap: 34px;
+    -moz-column-gap: 38px;
+         column-gap: 38px;
   }
   .menu-tabs {
     gap: 7px;
@@ -2041,6 +2081,10 @@ body.preloader-active {
   .menu-row .menu-price {
     font-size: 11px;
   }
+  .menu-group[data-group=wines] {
+    margin-top: 15px;
+    padding: 25px 0 27px;
+  }
   .menu-cta {
     width: 100vw;
     max-width: none;
@@ -2084,6 +2128,10 @@ body.preloader-active {
   }
   .menu-row h3 {
     font-size: 16px;
+  }
+  .menu-group[data-group=wines] {
+    padding-right: 0;
+    padding-left: 0;
   }
   .menu-cta {
     padding-right: 18px;
