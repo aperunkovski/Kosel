@@ -478,7 +478,7 @@ body.preloader-active {
   inset: 0;
 }
 .hero .hero-image {
-  background: url("/img/herooo1.jpg") center 54%/cover;
+  background: url("img/herooo1.jpg") center 54%/cover;
   animation: heroDrift 24s ease-in-out infinite alternate;
 }
 .hero .hero-shade {
